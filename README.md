@@ -26,9 +26,9 @@ Se debe configurar el archivo config.js en la raiz del proyecto
 
 ### Uso
 
-methods api
-Crear Usuarios
-1. http://localhost:3004/api/v1/users/signup POST
+EndPoints methods api
+
+1. http://localhost:3004/api/v1/users/signup POST ->Crecion de nuevo usuario se validan campos requeridos con JOI
 request
 ```json
 {
@@ -38,8 +38,7 @@ request
 }
 ```
 
-2. http://localhost:3004/api/v1/users/signin POST
-LogIn Usuario creado retorna JWT para continuar con las siguentes transacciones
+2. http://localhost:3004/api/v1/users/signin POST ->LogIn Usuario creado retorna JWT para continuar con las siguentes transacciones
 request
 ```json
 {
@@ -48,13 +47,20 @@ request
 }
 ```
 
-3. http://localhost:3004/api/v1/restaurants?latitude=12.91285&longitude=100.87808 GET
+3. http://localhost:3004/api/v1/restaurants?latitude=12.91285&longitude=100.87808 GET ->se tienen que utilizar tokens JWT en Bearer Token para validar si la autenticacion sigue vigente. ejemplo header Auth:
 request
 ```json
-Bearer Token JWT example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmU1YjIwYjE3MTk5MjE2ODZhOTZmZmUiLCJlbWFpbCI6InJhc2F3dEBnbWFpbC5jb20iLCJpYXQiOjE2NTkyMjA5MDQsImV4cCI6MTY2MDQzMDUwNH0.au6TL7WmhKWyPtje9bjZPpxO1qbGVdLYdlmmvMdD364
+Bearer Token : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmU1YjIwYjE3MTk5MjE2ODZhOTZmZmUiLCJlbWFpbCI6InJhc2F3dEBnbWFpbC5jb20iLCJpYXQiOjE2NTkyNzYyNjIsImV4cCI6MTY2MDQ4NTg2Mn0.DSm6aWCXawtGr0rAsFAtIX7p37XB1INRL26AHKmmg-0
 ```
 
-4. http://localhost:3004/api/v1/users/logout POST
+4. http://localhost:3004/api/v1/transact/ GET ->Consulta Historico transacciones es necesario Bearer Token
+
+
+5. http://localhost:3004/api/v1/transact/:email GET ->Consulta Historico transacciones por usuario es necesario Bearer Token
+
+
+
+6. http://localhost:3004/api/v1/users/logout POST -> esto inhabilita el token hasta que se vuelva hacer LogIn.
 request
 ```json
 {

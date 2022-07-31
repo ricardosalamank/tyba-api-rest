@@ -2,6 +2,7 @@
 const Transact = require('../models/transact')
 const jwt = require('jwt-simple')
 const config = require('../config')
+const boom = require('@hapi/boom')
 
 
 class TransactService {
@@ -24,6 +25,20 @@ class TransactService {
       const myTransact = new Transact(transactNew);
       return myTransact.save();
     
+  }
+
+  async listTransacts(data) {
+    const filter = (data) ? data : null;
+
+    const foundTransacts = await Transact.find(filter)
+      .catch(e => {
+      throw boom.internal('error transact noFound');
+    });
+
+    if (foundTransacts.length == 0) {
+      throw boom.notFound('transacts not found');
+    } 
+    return foundTransacts;
   }
 
 }
