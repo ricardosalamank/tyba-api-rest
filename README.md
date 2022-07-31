@@ -12,7 +12,7 @@ Ejecutar estos comandos dentro de la carpeta del proyecto:
 `npm install`
 `npm start`
 
-### Instalación Docker
+### Instalación con Docker
 
 Ejecutar estos comandos dentro de la carpeta del proyecto:
 
