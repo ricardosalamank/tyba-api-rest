@@ -5,12 +5,19 @@
 
  * Node.js 10+
 
-### Instalación
+### Instalación Local
 
-Ejecutar estos comando dentro de la carpeta del proyecto:
+Ejecutar estos comandos dentro de la carpeta del proyecto:
 
 `npm install`
 `npm start`
+
+### Instalación Docker
+
+Ejecutar estos comandos dentro de la carpeta del proyecto:
+
+`docker build -t apityba .`
+`docker run -p 3004:3004 apityba` 
 
 ### Configuración
 
