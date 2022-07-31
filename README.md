@@ -20,7 +20,11 @@ Se debe configurar el archivo config.js en la raiz del proyecto
 | --- | --- |
 | db | Configuracion de la conexion de la base no relacional mongodb cloud|
 | port | Puerto donde va quedar expuesta nuesta app |
-| SECRET_TOKEN | Scret pata armar el JWT|
+| SECRET_TOKEN | Secret pata armar el JWT|
+| API_RESTAURANTS | EndPoint Api Restaurant|
+| API_RESTAURANTS_KEY | Api key Restaurant|
+| API_RESTAURANTS_HOST | Host Api Restaurant|
+
 
 
 
@@ -56,7 +60,7 @@ Bearer Token : eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2MmU1YjIwYjE3MTk5
 4. http://localhost:3004/api/v1/transact/ GET ->Consulta Historico transacciones es necesario Bearer Token
 
 
-5. http://localhost:3004/api/v1/transact/:email GET ->Consulta Historico transacciones por usuario es necesario Bearer Token
+5. http://localhost:3004/api/v1/transact/:email GET ->Consulta Historico transacciones por usuario es necesario Bearer Token, puede probar con rasa@gmail.com
 
 
 

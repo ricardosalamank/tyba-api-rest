@@ -5,6 +5,16 @@ const moment = require('moment')
 const config = require('../config')
 const User = require('../models/user')
 
+/**
+* @method
+* @desc Creación de Token
+* @since 1.0.0
+* @version 1.0.0
+* @param {Object} [user] user
+* @todo Crea el token deacuerdo a los parametros del usuario con un vecimiento de 14 dias
+* @returns {Promise} responde el token 
+* @throws {reject} errores en la codificacion del token
+*/
 function createToken (user) {
   const payload = {
     sub: user._id,
@@ -16,6 +26,16 @@ function createToken (user) {
   return jwt.encode(payload, config.SECRET_TOKEN)
 }
 
+/**
+* @method
+* @desc Valida Token
+* @since 1.0.0
+* @version 1.0.0
+* @param {Object} [user] user
+* @todo Valida vigencia del token y tambien si este se encuentra activos deacuerdo al LogIn
+* @returns {Promise} responde el token 
+* @throws {reject} errores en la codificacion del token
+*/
 async function decodeToken(token) {
   const payload = jwt.decode(token, config.SECRET_TOKEN)
 
@@ -33,7 +53,6 @@ async function decodeToken(token) {
           message: 'El token ha expirado'
         })
       }
-      console.log(foundUser)
       if (!foundUser.statusLogin) {
         reject({
           status: 401,

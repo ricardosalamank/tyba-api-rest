@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const routerApi = require('./routes');
 const config = require('./config')
-const mongoose = require('mongoose')
+const db = require('./db');
 
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.handler');
 
@@ -25,7 +25,11 @@ const options = {
   }
 }*/
 
+/*
+* @desc Capa de Conexion y CORS
+*/
 app.use(cors());
+db(config.db);
 
 app.get('/', (req, res) => {
   res.send('Hola mi server en express');
@@ -34,18 +38,13 @@ app.get('/', (req, res) => {
 
 routerApi(app);
 
+/*
+* @desc Capa de Middlewares
+*/
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-
-mongoose.connect(config.db, {useMongoClient:true}, (err, res) => {
-  if (err) {
-    return console.log(`Error al conectar a la base de datos: ${err}`)
-  }
-  console.log('Conexión a la base de datos establecida...')
-
-  app.listen(config.port, () => {
-    console.log(`API REST corriendo en http://localhost:${config.port}`)
-  })
+app.listen(config.port, () => {
+  console.log(`API REST corriendo en http://localhost:${config.port}`)
 });

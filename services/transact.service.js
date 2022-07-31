@@ -4,9 +4,24 @@ const jwt = require('jwt-simple')
 const config = require('../config')
 const boom = require('@hapi/boom')
 
-
+/**
+* @class
+* @desc Clase TransactService contiene metodos transacciones a db
+* @since 1.0.0
+* @version 1.0.0
+*/
 class TransactService {
 
+  /**
+  * @method
+  * @desc Guardar Transacciones realizadas a la Api enviadas en los middlewares
+  * @since 1.0.0
+  * @version 1.0.0
+  * @param {Object,String,String} [req,property,transact]
+  * @todo Guarda registro transaccion realizada en Api
+  * @returns {Promise} respuesta transaccion guardada
+  * @throws {reject} Errores en el registro de la transaccion
+  */
   async saveTransact(req, property, transact) {
 
     let email = req[property].email;
@@ -27,6 +42,16 @@ class TransactService {
     
   }
 
+  /**
+  * @method
+  * @desc Lista historica de Transacciones Realizadas 
+  * @since 1.0.0
+  * @version 1.0.0
+  * @param {Object} [data] data puede ser opcional para filtar por algun tipo de registro
+  * @todo Busca historico filtrado si llega informacion adicional del objeto
+  * @returns {Promise} respuesta transaccion guardada
+  * @throws {reject} Errores en traer el listado.
+  */
   async listTransacts(data) {
     const filter = (data) ? data : null;
 
