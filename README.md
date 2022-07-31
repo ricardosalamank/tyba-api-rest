@@ -17,7 +17,7 @@ Ejecutar estos comandos dentro de la carpeta del proyecto:
 Ejecutar estos comandos dentro de la carpeta del proyecto:
 
 `docker build -t apityba .`
-`docker run -p 3004:3004 apityba` 
+`docker run --env-file ./api.env -p 3004:3004 apityba` 
 
 ### Configuración
 
