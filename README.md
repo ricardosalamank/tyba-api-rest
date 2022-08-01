@@ -21,7 +21,10 @@ Ejecutar estos comandos dentro de la carpeta del proyecto:
 
 ### Configuración
 
-Se debe configurar el archivo config.js en la raiz del proyecto
+Se debe configurar el archivo api.env en la raiz del proyecto que tiene las variables de entorno del proyecto, se versiona este archivo para no generar conflictos pero este archivo no debe ir versionado, esto en el caso que se despliegue con docker.
+
+Si se ejecuta el Api localmente se deben colocar las variables en el archivo config.js o colocar las variables en su entorno de desarrollo.
+
 
 | Opción | Descripción |
 | --- | --- |
